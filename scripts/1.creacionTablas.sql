@@ -17,7 +17,7 @@ CREATE TABLE Empleados (
     id INT PRIMARY KEY AUTO_INCREMENT,
     usuarioId INT NOT NULL,
     salario DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (usuarioId) REFERENCES Usuarios(id)
+    FOREIGN KEY (usuarioId) REFERENCES Usuarios(id) --Se usa FOREIGN KEY (usuarioId) REFERENCES Usuarios(id) para decir de donde viene o que relacion tiene
         ON DELETE CASCADE 
         ON UPDATE CASCADE
 );
@@ -38,11 +38,11 @@ CREATE TABLE Pedidos (
     fechaRealizacion DATE NOT NULL,
     fechaEnvio DATE,
     direccionEntrega VARCHAR(255) NOT NULL,
-    comentarios TEXT,
+    comentarios TEXT, --SE PONE TEXT PORQUE NO SABEMOS LA EXTENSION QUE VA A TENER EL VARCHAR MAXIMO ES DE 255 CUANDO NO SEPAMOS PONEMOS TEXT
     clienteId INT NOT NULL,
     empleadoId INT,
     FOREIGN KEY (clienteId) REFERENCES Clientes(id) 
-        ON DELETE RESTRICT 
+        ON DELETE RESTRICT    
         ON UPDATE RESTRICT,
     FOREIGN KEY (empleadoId) REFERENCES Empleados(id) 
         ON DELETE SET NULL 
